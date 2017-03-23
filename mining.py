@@ -6,6 +6,8 @@ import struct
 pubsub = multiprocessing.JoinableQueue()
 kill = multiprocessing.JoinableQueue()
 
+ZEROS = 6
+
 def crack():
     blob = "123".encode('utf-8')
 
@@ -29,7 +31,7 @@ def crack():
             two = hashlib.sha256(one).hexdigest()
 
             #8 zeros should be computationally quite hard
-            if two[0:7] == "0000000":
+            if two[0:ZEROS] == ZEROS*"0":
                 print(nonce, two)
                 kill.put(True)
                 break
