@@ -39,7 +39,9 @@ def crack():
             #Note for testing: 8 zeros should be computationally quite hard
             if two[0:ZEROS] == ZEROS*"0":
 		announce = str(n) + " : " + blob + " : " + two
-                status.publish(announce)
+		print(announce)
+                ackid = status.publish(announce)
+		print("Ack id: " + ackid)
                 break
 
         subscription.acknowledge(res[0][0])
