@@ -1,0 +1,8 @@
+package coins;
+
+message Compute {
+  required string payload = 1;
+  required int32 minnum = 2;
+  required int32 maxnum = 3;
+  required int32 zeros = 4;
+}
