@@ -4,7 +4,7 @@ import work_pb2
 #Connect to google pub/sub
 ps = pubsub.Client()
 topic = ps.topic("coins")
-tidy = topic.subscription("tidy")
+tidy = topic.subscription("work")
 
 #Get notifications from workers
 status = ps.topic("status")
@@ -23,13 +23,7 @@ with topic.batch() as batch:
         msg.maxnum = (r+1) * 10000000
         pubmsg = msg.SerializeToString()
         batch.publish(pubmsg)
+	if r % 1000 == 0:
+		batch.commit()
 
-res = subscription.pull(return_immediately=False)
-print("SOLUTION FOUND")
-print(res[0][1].data)
-
-
-#Tidy up queue
-res = tidy.pull(return_immediately=True, max_messages=100000)
-for r in res:
-    tidy.acknowledge(r[0])
+print("DONE FILLING QUEUE")

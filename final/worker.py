@@ -1,3 +1,6 @@
+import multiprocessing
+import hashlib
+import struct
 from google.cloud import pubsub
 import work_pb2
 
@@ -25,16 +28,18 @@ def crack():
         start = msg.minnum
         end = msg.maxnum
 
+	print("compute " + str(start) + " " + str(end))
         for n in range(start, end):
             nonce = n
 
-            tohash = struct.pack('<Ls', nonce, blob)
+            tohash = struct.pack('<Qs', nonce, blob)
             one = hashlib.sha256(tohash).digest()
             two = hashlib.sha256(one).hexdigest()
 
             #Note for testing: 8 zeros should be computationally quite hard
             if two[0:ZEROS] == ZEROS*"0":
-                status.publish(str(n) + " : " + blob + " : " + two)
+		announce = str(n) + " : " + blob + " : " + two
+                status.publish(announce)
                 break
 
         subscription.acknowledge(res[0][0])

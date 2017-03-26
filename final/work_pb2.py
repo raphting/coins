@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='work.proto',
   package='coins',
-  serialized_pb=_b('\n\nwork.proto\x12\x05\x63oins\"I\n\x07\x43ompute\x12\x0f\n\x07payload\x18\x01 \x02(\t\x12\x0e\n\x06minnum\x18\x02 \x02(\x05\x12\x0e\n\x06maxnum\x18\x03 \x02(\x05\x12\r\n\x05zeros\x18\x04 \x02(\x05')
+  serialized_pb=_b('\n\nwork.proto\x12\x05\x63oins\"I\n\x07\x43ompute\x12\x0f\n\x07payload\x18\x01 \x02(\t\x12\x0e\n\x06minnum\x18\x02 \x02(\x04\x12\x0e\n\x06maxnum\x18\x03 \x02(\x04\x12\r\n\x05zeros\x18\x04 \x02(\x04')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -41,21 +41,21 @@ _COMPUTE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='minnum', full_name='coins.Compute.minnum', index=1,
-      number=2, type=5, cpp_type=1, label=2,
+      number=2, type=4, cpp_type=4, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='maxnum', full_name='coins.Compute.maxnum', index=2,
-      number=3, type=5, cpp_type=1, label=2,
+      number=3, type=4, cpp_type=4, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='zeros', full_name='coins.Compute.zeros', index=3,
-      number=4, type=5, cpp_type=1, label=2,
+      number=4, type=4, cpp_type=4, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
