@@ -1,0 +1,5 @@
+google-cloud-pubsub
+google-auth-httplib2
+httplib2
+protobuf
+google-auth
