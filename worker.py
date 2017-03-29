@@ -45,7 +45,7 @@ def crack():
 		print("Ack id: " + ackid)
                 break
 
-        subscription.acknowledge(res[0][0])
+        subscription.acknowledge([res[0][0]])
 
 
 threads = []

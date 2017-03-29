@@ -12,5 +12,5 @@ while True:
 	print("SOLUTION FOUND")
 	for r in res:
 		print(r[1].data)
-		solution.acknowledge(r[0])
+		solution.acknowledge([r[0]])
 
