@@ -1,9 +1,10 @@
+import os
 from google.cloud import pubsub
 
 #Connect to google pub/sub
 ps = pubsub.Client()
-status = ps.topic("status")
-solution = status.subscription("solution")
+status = ps.topic(os.environ['PUBSUB_STATUS'])
+solution = status.subscription(os.environ['PUBSUB_SOLUTION'])
 
 print("WAITING FOR RESULT...")
 while True:

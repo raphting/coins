@@ -1,17 +1,18 @@
 import multiprocessing
 import hashlib
+import os
 import struct
 from google.cloud import pubsub
 import work_pb2
 
 #subscribe to working tasks
 ps = pubsub.Client()
-topic = ps.topic("coins")
+topic = ps.topic(os.environ['PUBSUB_WORK'])
 #wait 60 sec until requeuing message if not acknowledged
-subscription = topic.subscription("work", ack_deadline=60)
+subscription = topic.subscription(os.environ['PUBSUB_TASK'], ack_deadline=60)
 
 #attach to status updates to notify controller
-status = ps.topic("status")
+status = ps.topic(os.environ['PUBSUB_STATUS'])
 
 #Prepare protobuf parser
 msg = work_pb2.Compute()

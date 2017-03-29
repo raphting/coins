@@ -1,19 +1,15 @@
+import os
 from google.cloud import pubsub
 import work_pb2
 
 #Connect to google pub/sub
 ps = pubsub.Client()
-topic = ps.topic("coins")
-tidy = topic.subscription("work")
-
-#Get notifications from workers
-status = ps.topic("status")
-subscription = status.subscription("solution")
+topic = ps.topic(os.environ['PUBSUB_WORK'])
 
 #Serialize work instructions in protobuf
 msg = work_pb2.Compute()
-msg.payload = "jojo"
-msg.zeros = 5
+msg.payload = "example"
+msg.zeros = 7
 
 #Iterate over work packages and publish in pub/sub
 #publish as batch job to avoid a few thousand API calls on the network
